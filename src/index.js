@@ -1,6 +1,8 @@
+import 'dotenv/config';
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+// removed local uploads serving (using GCS instead)
 
 import { conectar } from "./config/database.js";
 import ecommerceRoutes from "./routes/ecommerceRoutes.js";
@@ -10,6 +12,9 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cors({ origin: "*" })); // luego lo restringimos
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// No servimos la carpeta local /uploads cuando usamos Google Cloud Storage
 
 app.get("/", (req, res) => res.send("API Ecommerce - Servidor Funcionando"));
 app.use("/api", ecommerceRoutes);

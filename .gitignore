@@ -26,3 +26,6 @@ Thumbs.db
 # Build files
 dist/
 build//
+
+# Service account credentials (keep out of VCS)
+service-account.json
