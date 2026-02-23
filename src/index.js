@@ -14,6 +14,7 @@ app.use(express.json());
 app.get("/", (req, res) => res.send("API Ecommerce - Servidor Funcionando"));
 app.use("/api", ecommerceRoutes);
 
+
 async function startServer() {
   try {
     await conectar();
